@@ -1,0 +1,21 @@
+// CONTENT
+$color-body-bg: #fff;
+$color-text: #767676;
+$color-header-bg: #394783;
+$color-header-text: #c4c7d9;
+
+$color-footer-bg: #f3f3f3;
+
+// LINKS
+$color-link-text: #707aa5;
+$color-link-text-active: $color-text;
+
+// INPUTS
+$color-input-border: #dfe2eb;
+
+// BUTTONS
+$color-button-bg: $color-link-text;
+$color-button-disabled-bg: darken(desaturate($color-button-bg, 20%), 10%);
+$color-button-text: white;
+
+$color-selected-post: lightgray;

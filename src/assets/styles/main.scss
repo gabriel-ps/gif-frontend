@@ -1,0 +1,22 @@
+@import '~bootstrap';
+@import '~bootstrap-vue';
+
+// Design variables and utilities
+@import '@/assets/styles/design/index.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  color: $color-text;
+  background: $color-body-bg;
+  margin: 0;
+}
+
+a,
+a:visited {
+  color: $color-link-text;
+}

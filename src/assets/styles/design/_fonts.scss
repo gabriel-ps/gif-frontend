@@ -1,0 +1,21 @@
+$system-default-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol';
+
+$header-font-family: $system-default-font-family;
+$header-font-weight: 600;
+
+$content-font-family: $system-default-font-family;
+$content-font-weight: 400;
+
+%font-header {
+  font-family: $header-font-family;
+  font-weight: $header-font-weight;
+  color: $color-header-text;
+}
+
+%font-content {
+  font-family: $content-font-family;
+  font-weight: $content-font-weight;
+  color: $color-text;
+}

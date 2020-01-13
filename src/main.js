@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import { BootstrapVue } from 'bootstrap-vue'
 
+import '@/modules/core/components/base/globals'
+
 Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
