@@ -6,6 +6,10 @@ export default class AuthService {
     this.tokenService = new TokenService()
   }
 
+  isLoggedIn () {
+    return this.tokenService.hasToken()
+  }
+
   login (credentials) {
     return axios.post('/auth/login', credentials).then((response) => {
       this.tokenService.setToken(response.data)
