@@ -1,10 +1,9 @@
 // Globally register all base components for convenience, because they
 // will be used very frequently. Components are registered using the
-// PascalCased version of their file name.
+// kebab-cased version of their file name.
 
 import Vue from 'vue'
-import upperFirst from 'lodash/upperFirst'
-import camelCase from 'lodash/camelCase'
+import kebabCase from 'lodash/kebabCase'
 
 // https://webpack.js.org/guides/dependency-management/#require-context
 const requireComponent = require.context(
@@ -21,13 +20,12 @@ requireComponent.keys().forEach((fileName) => {
   // Get the component config
   const componentConfig = requireComponent(fileName)
   // Get the PascalCase version of the component name
-  const componentName = upperFirst(
-    camelCase(
-      fileName
-        // Remove the file extension from the end
-        .replace(/\.\w+$/, '')
-    )
+  const componentName = kebabCase(
+    fileName
+      // Remove the file extension from the end
+      .replace(/\.\w+$/, '')
   )
+
   // Globally register the component
   Vue.component(componentName, componentConfig.default || componentConfig)
 })

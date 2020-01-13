@@ -13,8 +13,6 @@ const routes = [
   ...gifs
 ]
 
-console.log(routes)
-
 const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
