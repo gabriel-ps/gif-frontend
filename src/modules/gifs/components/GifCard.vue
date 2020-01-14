@@ -2,7 +2,7 @@
   <div class="col-md-4 gif-card">
     <img
       class="bd-placeholder-img card-img-top"
-      :src="gif.url"
+      :src="gifUrl"
     />
   </div>
 </template>
@@ -11,8 +11,13 @@
 export default {
   props: {
     gif: {
-      type: Object,
+      // type: Object,
       required: true
+    }
+  },
+  computed: {
+    gifUrl () {
+      return this.gif.images.downsized.url
     }
   }
 }
