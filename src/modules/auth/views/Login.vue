@@ -27,7 +27,7 @@
         type="password"
         v-model="$v.password.$model"
         :state="!$v.password.$dirty ? null : !$v.password.$invalid"
-        error-message="Please inform a password with a least 3 chars."
+        error-message="Please inform your password."
         :disabled="sending"
       />
 
@@ -49,7 +49,7 @@ import AuthService from '../domain/AuthService'
 export default {
   data () {
     return {
-      email: '',
+      email: 'test@test.com',
       password: '',
       authService: new AuthService(),
       sending: false,

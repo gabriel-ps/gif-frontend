@@ -1,14 +1,21 @@
-import GifsList from './views/GifsList.vue'
+import GifList from './views/GifList.vue'
 import isLoggedInGuard from '@/modules/auth/domain/isLoggedInGuard'
+import RootLoggedInLayout from '@/modules/core/components/layout/RootLoggedInLayout'
 
 export default [
   {
     path: '/gifs',
-    component: GifsList,
-    name: 'gifs.list',
-    meta: {
-      title: 'Search Gifs'
-    },
-    beforeEnter: isLoggedInGuard
+    component: RootLoggedInLayout,
+    children: [
+      {
+        path: '/',
+        component: GifList,
+        name: 'gifs.list',
+        meta: {
+          title: 'Search Gifs'
+        },
+        beforeEnter: isLoggedInGuard
+      }
+    ]
   }
 ]

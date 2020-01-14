@@ -20,8 +20,8 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.length) {
-    document.title = to.matched[0].meta.title
+  if (to.meta) {
+    document.title = to.meta.title
   }
   next()
 })
