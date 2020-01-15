@@ -1,5 +1,8 @@
 <template>
-  <div class="col-md-4 gif-card">
+  <div
+    class="col-md-4 gif-card"
+    @click="$emit('click')"
+  >
     <img
       class="bd-placeholder-img card-img-top"
       :src="gifUrl"
@@ -26,5 +29,6 @@ export default {
 <style lang="scss" scoped>
 .gif-card {
   margin-bottom: 3em;
+  cursor: pointer;
 }
 </style>
