@@ -1,7 +1,7 @@
 <template>
   <div class="root">
     <the-header />
-    <main class="bg-light">
+    <main>
       <router-view />
     </main>
 </div>

@@ -71,6 +71,10 @@ export default {
       padding: 1em;
       font-size: 2em;
     }
+
+    .invalid-feedback {
+      font-size: 1.4em;
+    }
   }
 
   ::v-deep &__submit {

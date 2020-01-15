@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     gifUrl () {
-      return this.gif.images.downsized.url
+      return this.gif.images.fixed_width_downsampled.url
     }
   }
 }

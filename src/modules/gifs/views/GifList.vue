@@ -6,10 +6,20 @@
           :loading="loading"
           @search="searchGifs"
         />
+        <b-alert
+          :show="searchError.length"
+          variant="danger"
+          dismissible
+        >
+          {{ searchError }}
+        </b-alert>
       </div>
     </section>
 
-    <div class="album py-5">
+    <div
+      v-if="gifs.length"
+      class="album py-5"
+    >
       <div class="container">
         <div class="row">
           <gif-card
@@ -38,28 +48,23 @@ export default {
       loading: false,
       searchError: '',
       gifService: new GifService(),
-      gifs: [
-        {
-          id: '1',
-          url: 'https://media.giphy.com/media/4Zo41lhzKt6iZ8xff9/giphy.gif'
-        }
-      ]
+      gifs: []
     }
   },
   methods: {
     async searchGifs (search) {
       this.loading = true
+      this.searchError = ''
 
       try {
         const response = await this.gifService.get(search)
         this.gifs = response.data.data
       } catch (error) {
-        if (error.response.status === 401) {
+        /* if (error.response.status === 422) {
           // Error message from server
-          this.searchError = error.response.data.error
-        } else {
-          this.searchErro = 'Unkown error.'
-        }
+          this.searchError = error.response.data.message
+        } */
+        this.searchError = 'Failed to fetch gifs.'
       } finally {
         this.loading = false
       }

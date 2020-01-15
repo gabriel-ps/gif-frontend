@@ -8,9 +8,9 @@ export default [
     component: RootLoggedInLayout,
     children: [
       {
-        path: '/',
+        path: '',
         component: GifList,
-        name: 'gifs.list',
+        name: 'gif.list',
         meta: {
           title: 'Search Gifs'
         },

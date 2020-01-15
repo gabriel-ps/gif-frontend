@@ -1,4 +1,4 @@
-const KEY = 'authToken'
+const key = 'authToken'
 
 export default class TokenService {
   hasToken () {
@@ -6,11 +6,11 @@ export default class TokenService {
   }
 
   setToken (token) {
-    window.localStorage.setItem(KEY, JSON.stringify(token))
+    window.localStorage.setItem(key, JSON.stringify(token))
   }
 
   getToken () {
-    return JSON.parse(window.localStorage.getItem(KEY))
+    return JSON.parse(window.localStorage.getItem(key))
   }
 
   getTokenString () {
@@ -22,6 +22,6 @@ export default class TokenService {
   }
 
   removeToken () {
-    window.localStorage.removeItem(KEY)
+    window.localStorage.removeItem(key)
   }
 }

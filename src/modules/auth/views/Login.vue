@@ -82,7 +82,7 @@ export default {
           password: this.password
         })
 
-        this.$router.push({ name: 'gifs.list' })
+        this.$router.push({ name: 'gif.list' })
       } catch (error) {
         if (error.response.status === 401) {
           // Error message from server
