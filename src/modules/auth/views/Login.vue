@@ -112,8 +112,7 @@ export default {
 
 <style lang="scss" scoped>
 .login {
-  padding-top: 14em;
-  padding-bottom: 4em;
+  padding: 14em 2em 0;
 
   &__form {
     max-width: 420px;

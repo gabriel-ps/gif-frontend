@@ -55,7 +55,7 @@ export default {}
 <style lang="scss" scoped>
 .header {
   &__navbar {
-    padding: 1em 0em;
+    padding: 1em 2em;
 
     &__brand {
       font-size: 2em;
