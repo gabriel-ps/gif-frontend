@@ -17,7 +17,7 @@
     </section>
 
     <div
-      v-if="gifs.length"
+      v-if="gifs.length && !loading"
       class="album py-5"
     >
       <div class="container">
@@ -32,13 +32,23 @@
       </div>
     </div>
 
+    <div
+      v-show="loading"
+      class="container"
+    >
+      <h3 class="text-info">Loading...</h3>
+    </div>
+
     <gif-modal
       :gif="selectedGif"
       :currIndex="selectedGifIndex"
       :totalItens="gifs.length"
+      :gifService="gifService"
       @close="selectedGifIndex = -1"
       @previous="selectedGifIndex--"
       @next="selectedGifIndex++"
+      @favorite="favoriteGif"
+      @unfavorite="unfavoriteGif"
     />
   </div>
 </template>
@@ -66,6 +76,9 @@ export default {
   },
   methods: {
     async searchGifs (search) {
+      if (this.loading) {
+        return
+      }
       this.loading = true
       this.searchError = ''
       this.selectedGifIndex = -1
@@ -74,14 +87,16 @@ export default {
         const response = await this.gifService.get(search)
         this.gifs = response.data.data
       } catch (error) {
-        /* if (error.response.status === 422) {
-          // Error message from server
-          this.searchError = error.response.data.message
-        } */
         this.searchError = 'Failed to fetch gifs.'
       } finally {
         this.loading = false
       }
+    },
+    async favoriteGif () {
+      this.selectedGif.favorite = true
+    },
+    async unfavoriteGif () {
+      this.selectedGif.favorite = false
     }
   },
   computed: {

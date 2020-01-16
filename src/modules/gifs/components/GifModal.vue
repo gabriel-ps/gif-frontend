@@ -9,7 +9,10 @@
       class="bd-placeholder-img card-img-top"
       :src="gifUrl"
     />
-    <template v-slot:modal-footer>
+    <template
+      v-if="gif"
+      v-slot:modal-footer
+    >
       <b-button
         class="float-left"
         variant="info"
@@ -17,6 +20,22 @@
         v-show="currIndex > 0"
         @click="$emit('previous')"
       >&lt;&lt; Previous</b-button>
+
+      <b-button
+        v-if="!gif.favorite"
+        variant="primary"
+        size="lg"
+        :disabled="loading"
+        @click="favorite"
+      >Favorite</b-button>
+      <b-button
+        v-else
+        variant="danger"
+        size="lg"
+        :disabled="loading"
+        @click="unfavorite"
+      >Unfavorite</b-button>
+
       <b-button
         class="float-right"
         variant="info"
@@ -32,8 +51,8 @@
 export default {
   props: {
     gif: {
-      // type: Object,
-      required: true
+      required: true,
+      validator: prop => typeof prop === 'object' || prop === null
     },
     currIndex: {
       type: Number,
@@ -42,11 +61,52 @@ export default {
     totalItens: {
       type: Number,
       required: true
+    },
+    gifService: {
+      type: Object,
+      required: true
+    }
+  },
+  data () {
+    return {
+      loading: false
     }
   },
   computed: {
     gifUrl () {
       return this.gif.images.fixed_width_downsampled.url
+    }
+  },
+  methods: {
+    async favorite () {
+      if (this.loading) {
+        return
+      }
+      this.loading = true
+
+      try {
+        await this.gifService.favorite(this.gif.id)
+        this.$emit('favorite')
+      } catch (error) {
+
+      } finally {
+        this.loading = false
+      }
+    },
+    async unfavorite () {
+      if (this.loading) {
+        return
+      }
+      this.loading = true
+
+      try {
+        await this.gifService.unfavorite(this.gif.id)
+        this.$emit('unfavorite')
+      } catch (error) {
+
+      } finally {
+        this.loading = false
+      }
     }
   }
 }
@@ -55,5 +115,6 @@ export default {
 <style lang="scss" scoped>
 ::v-deep .modal-footer {
   display: block;
+  text-align: center;
 }
 </style>
