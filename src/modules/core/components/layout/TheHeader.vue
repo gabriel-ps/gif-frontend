@@ -8,7 +8,7 @@
     >
       <b-container class="d-flex justify-content-between">
         <b-navbar-brand
-          href="#"
+          :to="{ name: 'gif.list' }"
           class="header__navbar__brand d-flex align-items-center"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
@@ -25,11 +25,11 @@
           <b-navbar-nav class="ml-auto">
             <b-navbar-nav>
               <b-nav-item
-                :to="{ name: 'gifs.search-history' }"
+                :to="{ name: 'gif.search-history' }"
                 class="header__navbar__nav-item text-white"
               >Search history</b-nav-item>
               <b-nav-item
-                :to="{ name: 'gifs.favorites' }"
+                :to="{ name: 'gif.favorites' }"
                 class="header__navbar__nav-item text-white"
               >Favorites</b-nav-item>
               <b-nav-item
@@ -37,13 +37,6 @@
                 class="header__navbar__nav-item text-white"
               >Log out</b-nav-item>
             </b-navbar-nav>
-            <!-- <b-nav-item-dropdown right>
-              <template v-slot:button-content>
-                <em>User</em>
-              </template>
-              <b-dropdown-item href="#">Profile</b-dropdown-item>
-              <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-            </b-nav-item-dropdown> -->
           </b-navbar-nav>
         </b-collapse>
       </b-container>

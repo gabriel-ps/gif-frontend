@@ -12,4 +12,8 @@ export default class GifService {
   unfavorite (gifId) {
     return axios.delete('/gifs/favorite/' + gifId)
   }
+
+  fetchSearches () {
+    return axios.get('/gifs/searches')
+  }
 }
