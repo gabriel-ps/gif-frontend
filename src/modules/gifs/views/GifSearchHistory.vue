@@ -22,7 +22,6 @@
         :items="tableItems"
         :fields="tableFields"
       />
-      </table>
     </b-container>
 
   </div>
