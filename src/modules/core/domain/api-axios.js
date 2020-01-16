@@ -19,7 +19,7 @@ axiosInstance.interceptors.request.use(function (config) {
 axiosInstance.interceptors.response.use(response => {
   return response
 }, error => {
-  if (error.response.status === 401) {
+  if (error.response.status === 401 && router.history.current.name !== 'auth.login') {
     // Unauthenticated, remove expired token and send to login page
     tokenService.removeToken()
     router.push({ name: 'auth.login' })

@@ -4,6 +4,15 @@
       class="login__form mx-auto"
       @submit.prevent="login"
     >
+      <h1 class="text-center">GIF API</h1>
+      <b-alert
+        show
+        variant="light"
+      >
+        E-mail: test@test.com
+        <br />
+        Password: 123456
+      </b-alert>
       <b-alert
         :show="showErrorAlert"
         variant="danger"

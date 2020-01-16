@@ -11,11 +11,18 @@ export default class AuthService {
   }
 
   login (credentials) {
-    return axios.post('/auth/login', credentials).then((response) => {
-      this.tokenService.setToken(response.data)
-      return response
-    })
+    return axios.post('/auth/login', credentials)
+      .then((response) => {
+        this.tokenService.setToken(response.data)
+        return response
+      })
   }
 
-  logout () {}
+  logout () {
+    return axios.post('/auth/logout')
+      .then((response) => {
+        this.tokenService.removeToken()
+        return response
+      })
+  }
 }
