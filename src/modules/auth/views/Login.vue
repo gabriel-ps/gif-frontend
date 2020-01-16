@@ -58,7 +58,7 @@ import AuthService from '../domain/AuthService'
 export default {
   data () {
     return {
-      email: 'test@test.com',
+      email: '',
       password: '',
       authService: new AuthService(),
       sending: false,

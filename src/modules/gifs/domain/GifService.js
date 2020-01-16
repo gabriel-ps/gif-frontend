@@ -5,12 +5,16 @@ export default class GifService {
     return axios.get('/gifs', { params: { search } })
   }
 
+  fetchFavorites () {
+    return axios.get('/gifs/favorites')
+  }
+
   favorite (gifId) {
-    return axios.post('/gifs/favorite', { gif_id: gifId })
+    return axios.post('/gifs/favorites', { gif_id: gifId })
   }
 
   unfavorite (gifId) {
-    return axios.delete('/gifs/favorite/' + gifId)
+    return axios.delete('/gifs/favorites/' + gifId)
   }
 
   fetchSearches () {

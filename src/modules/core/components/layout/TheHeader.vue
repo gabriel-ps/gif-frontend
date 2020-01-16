@@ -25,6 +25,10 @@
           <b-navbar-nav class="ml-auto">
             <b-navbar-nav>
               <b-nav-item
+                :to="{ name: 'gif.list' }"
+                class="header__navbar__nav-item text-white"
+              >Search</b-nav-item>
+              <b-nav-item
                 :to="{ name: 'gif.search-history' }"
                 class="header__navbar__nav-item text-white"
               >Search history</b-nav-item>

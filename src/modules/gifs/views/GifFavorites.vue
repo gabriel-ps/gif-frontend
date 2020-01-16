@@ -1,20 +1,23 @@
 <template>
   <div class="gifs-list">
     <section class="jumbotron text-center">
-      <div class="container">
-        <gif-search-bar
-          :loading="loading"
-          @search="searchGifs"
-        />
-        <b-alert
-          :show="searchError.length"
-          variant="danger"
-          dismissible
-        >
-          {{ searchError }}
-        </b-alert>
-      </div>
+      <b-container>
+        <h2>Your favorite GIFs</h2>
+      </b-container>
     </section>
+
+    <b-container>
+      <h3
+        v-if="loading"
+        class="text-info"
+      >
+        Loading...
+      </h3>
+      <h3
+        v-else-if="fetchError"
+        class="text-danger"
+      >{{ fetchError }}</h3>
+    </b-container>
 
     <div
       v-if="gifs.length && !loading"
@@ -30,13 +33,6 @@
           />
         </div>
       </div>
-    </div>
-
-    <div
-      v-show="loading"
-      class="container"
-    >
-      <h3 class="text-info">Loading...</h3>
     </div>
 
     <gif-modal
@@ -55,39 +51,40 @@
 
 <script>
 import GifCard from '../components/GifCard'
-import GifSearchBar from '../components/GifSearchBar'
 import GifModal from '../components/GifModal'
 import GifService from '../domain/GifService'
 
 export default {
   components: {
     GifCard,
-    GifSearchBar,
     GifModal
   },
   data () {
     return {
       loading: false,
-      searchError: '',
+      fetchError: '',
       gifService: new GifService(),
       gifs: [],
       selectedGifIndex: -1
     }
   },
+  created () {
+    this.fetchFavorites()
+  },
   methods: {
-    async searchGifs (search) {
+    async fetchFavorites () {
       if (this.loading) {
         return
       }
       this.loading = true
-      this.searchError = ''
+      this.fetchError = ''
       this.selectedGifIndex = -1
 
       try {
-        const response = await this.gifService.get(search)
+        const response = await this.gifService.fetchFavorites()
         this.gifs = response.data.data
       } catch (error) {
-        this.searchError = 'Failed to fetch gifs.'
+        this.fetchError = 'Failed to fetch gifs.'
       } finally {
         this.loading = false
       }
