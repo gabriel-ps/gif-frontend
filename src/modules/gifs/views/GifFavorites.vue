@@ -17,6 +17,10 @@
         v-else-if="fetchError"
         class="text-danger"
       >{{ fetchError }}</h3>
+      <h3
+        v-else-if="gifs.length === 0"
+        class="text-danger"
+      >No gif favorited yet.</h3>
     </b-container>
 
     <div
