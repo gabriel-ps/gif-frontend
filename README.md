@@ -1,4 +1,6 @@
-# gif-frontend
+# GIF Frontend
+
+Client to consume the [gif-api](https://github.com/gabriel-ps/gif-api "gif-api") project.
 
 ## Project setup
 ```
@@ -9,20 +11,11 @@ npm install
 ```
 npm run serve
 ```
+Launchs on [http://localhost:8081](http://localhost:8081) by default.
 
 ### Compiles and minifies for production
 ```
 npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
